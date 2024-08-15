@@ -451,7 +451,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventName.steerTempUnavailableSilent: {
     ET.WARNING: Alert(
-      "自动转向不可用",
+      "自动转向暂不可用",
       "",
       AlertStatus.userPrompt, AlertSize.small,
       Priority.LOW, VisualAlert.steerRequired, AudibleAlert.prompt, 1.8),
@@ -603,7 +603,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventName.cruiseEngageBlocked: {
     ET.WARNING: Alert(
-      "openpilot 不可用",
+      "openpilot 暂不可用",
       "Pedal Pressed During Cruise Engage",
       AlertStatus.normal, AlertSize.mid,
       Priority.LOW, VisualAlert.brakePressed, AudibleAlert.refuse, 3.),
@@ -732,7 +732,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventName.brakeHold: {
     ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
-    ET.NO_ENTRY: NoEntryAlert("刹车辅助启用"),
+    ET.NO_ENTRY: NoEntryAlert("正在使用刹车保持"),
   },
 
   EventName.silentBrakeHold: {
@@ -741,12 +741,12 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "",
       AlertStatus.normal, AlertSize.none,
       Priority.MID, VisualAlert.none, AudibleAlert.none, .2, 0., 0.),
-    ET.NO_ENTRY: NoEntryAlert("刹车辅助启用"),
+    ET.NO_ENTRY: NoEntryAlert("正在使用刹车保持"),
   },
 
   EventName.parkBrake: {
     ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
-    ET.NO_ENTRY: NoEntryAlert("驻车制动已启用"),
+    ET.NO_ENTRY: NoEntryAlert("正在使用驻车制动"),
   },
 
   EventName.pedalPressed: {
@@ -863,12 +863,12 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   EventName.silentWrongGear: {
     ET.SOFT_DISABLE: Alert(
       "请切换到D档",
-      "openpilot 不可用",
+      "openpilot 暂不可用",
       AlertStatus.normal, AlertSize.mid,
       Priority.LOW, VisualAlert.none, AudibleAlert.none, 0., 2., 3.),
     ET.NO_ENTRY: Alert(
       "请切换到D档",
-      "openpilot 不可用",
+      "openpilot 暂不可用",
       AlertStatus.normal, AlertSize.mid,
       Priority.LOW, VisualAlert.none, AudibleAlert.none, 0., 2., 3.),
   },
