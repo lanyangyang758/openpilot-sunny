@@ -25,11 +25,11 @@ from openpilot.common.swaglog import cloudlog
 
 LON_MPC_STEP = 0.2  # first step is 0.2s
 A_CRUISE_MIN = -0.7
-A_CRUISE_MAX_VALS = [1.2, 1.2, 1.1, 1.0, .71, .59, .45, .36, .28, .085]
+A_CRUISE_MAX_VALS = [1.2, 1.2, 1.1, 1.0, .71, .59, .45, .32, .28, .085]
 A_CRUISE_MAX_BP = [0., 1., 6., 8., 11., 15., 20., 25., 30., 55.]
 
 # Lookup table for turns
-_A_TOTAL_MAX_V = [.68,  .53,  .36,  .28,  .090]
+_A_TOTAL_MAX_V = [.68,  .53,  .32,  .28,  .090]
 _A_TOTAL_MAX_BP = [15.,  20.,  25.,  30.,  55.]
 
 
