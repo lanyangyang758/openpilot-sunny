@@ -24,13 +24,13 @@ from openpilot.selfdrive.controls.lib.events import Events
 from openpilot.common.swaglog import cloudlog
 
 LON_MPC_STEP = 0.2  # first step is 0.2s
-A_CRUISE_MIN = -0.7
-A_CRUISE_MAX_VALS = [1.2, 1.2, 1.1, 1.0, .71, .59, .45, .34, .28, .090]
-A_CRUISE_MAX_BP = [0., 1., 6., 8., 11., 15., 20., 25., 30., 55.]
+A_CRUISE_MIN = -0.1
+A_CRUISE_MAX_VALS = [2.0, 2.0, 1.8, 1.35, 0.86, .53,  .43,  .32,  .09]
+A_CRUISE_MAX_BP = [0.,  4.,  6.,  8.,   11.,  20.,  25.,  30.,  40.]
 
 # Lookup table for turns
-_A_TOTAL_MAX_V = [.68,  .53,  .36,  .28,  .090]
-_A_TOTAL_MAX_BP = [15.,  20.,  25.,  30.,  55.]
+_A_TOTAL_MAX_V = [0.86, .53,  .43,  .32,  .09]
+_A_TOTAL_MAX_BP = [11.,  20.,  25.,  30.,  40.]
 
 
 EventName = car.CarEvent.EventName
