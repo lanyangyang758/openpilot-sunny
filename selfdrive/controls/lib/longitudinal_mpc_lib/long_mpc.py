@@ -85,20 +85,19 @@ def get_T_FOLLOW(personality=custom.LongitudinalPersonalitySP.standard):
 
 def get_dynamic_personality(v_ego, personality=custom.LongitudinalPersonalitySP.standard):
   if personality==custom.LongitudinalPersonalitySP.relaxed:
-    x_vel =  [0,    11,   14.5, 15,   20,   20.01,  25,    25.01,  36,  36.01]
-    y_dist = [1.5,  1.5,  1.5,  1.6,  1.76, 1.76,   1.78,  1.78,   1.8, 1.8]
+    x_vel =  [0,    5.,   5.01,  20.,   27.7]
+    y_dist = [1.0,  1.0,  1.75,  1.75,  1.83]
   elif personality==custom.LongitudinalPersonalitySP.standard:
-    x_vel =  [0,    11,   14.5, 15,   20,   20.01,  25,    25.01,  36,  36.01]
-    y_dist = [1.40, 1.40, 1.40, 1.50, 1.60, 1.76,   1.76,  1.78,   1.8, 1.8]
+    x_vel =  [0,    5.,   5.01,  20.,   27.7]
+    y_dist = [1.45, 1.45, 1.75,  1.75,  1.70]
   elif personality==custom.LongitudinalPersonalitySP.moderate:
-    x_vel =  [0,    11,   14.5, 15,   20,   20.01,  25,    25.01,  36,  36.01]
-    y_dist = [1.3,  1.3,  1.3,  1.35, 1.35, 1.385,  1.385, 1.4,   1.4,  1.45]
+    x_vel =  [0,    27.69, 27.7]
+    y_dist = [1.45, 1.45,  1.40]
   elif personality==custom.LongitudinalPersonalitySP.aggressive:
-    x_vel =  [0,     5,     5.01,  11,    14.5,   15,    20,    20.01,  25, 25.01, 36,   36.01]
-    y_dist = [1.12,  1.12,  1.12,  1.12,  1.12,  1.105, 1.105, 1.15, 1.15, 1.18, 1.20,  1.23]
+    x_vel =  [0,    20.0, 20.01, 27.69, 27.7]
+    y_dist = [1.0,  1.0,  1.10,  1.10,  1.20]
   else:
     raise NotImplementedError("Dynamic personality not supported")
-
   return np.interp(v_ego, x_vel, y_dist)
 
 
