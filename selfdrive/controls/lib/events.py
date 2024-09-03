@@ -579,7 +579,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventName.laneChange: {
     ET.WARNING: Alert(
-      "Changing Lanes",
+      "正在变道",
       "",
       AlertStatus.normal, AlertSize.small,
       Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
