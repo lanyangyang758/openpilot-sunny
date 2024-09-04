@@ -827,7 +827,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "传感器数据无效",
       "可能是硬件故障",
       AlertStatus.normal, AlertSize.mid,
-      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=1.),
+      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=1000000000000000.),
     ET.NO_ENTRY: NoEntryAlert("传感器数据无效"),
     ET.SOFT_DISABLE: soft_disable_alert("传感器数据无效"),
   },
@@ -837,7 +837,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "GPS信号弱",
       "请将车辆行驶到开阔路段",
       AlertStatus.normal, AlertSize.mid,
-      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=600.)
+      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=6000000000000000.)
   },
 
   EventName.soundsUnavailable: {
