@@ -422,22 +422,22 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
                                        priority=Priority.LOWEST),
   },
 
-  EventName.stockAeb: {
-    ET.PERMANENT: Alert(
-      "立即刹车!",
-      "碰撞风险",
-      AlertStatus.critical, AlertSize.full,
-      Priority.HIGHEST, VisualAlert.fcw, AudibleAlert.none, 2.),
-    ET.NO_ENTRY: NoEntryAlert("碰撞风险"),
-  },
+  # EventName.stockAeb: {
+  #   ET.PERMANENT: Alert(
+  #     "立即刹车!",
+  #     "碰撞风险",
+  #     AlertStatus.critical, AlertSize.full,
+  #     Priority.HIGHEST, VisualAlert.fcw, AudibleAlert.none, 2.),
+  #   ET.NO_ENTRY: NoEntryAlert("碰撞风险"),
+  # },
 
-  EventName.fcw: {
-    ET.PERMANENT: Alert(
-      "立即刹车!",
-      "碰撞风险",
-      AlertStatus.critical, AlertSize.full,
-      Priority.HIGHEST, VisualAlert.fcw, AudibleAlert.warningSoft, 2.),
-  },
+  # EventName.fcw: {
+  #   ET.PERMANENT: Alert(
+  #     "立即刹车!",
+  #     "碰撞风险",
+  #     AlertStatus.critical, AlertSize.full,
+  #     Priority.HIGHEST, VisualAlert.fcw, AudibleAlert.warningSoft, 2.),
+  # },
 
   EventName.ldw: {
     ET.PERMANENT: Alert(
