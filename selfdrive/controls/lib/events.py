@@ -835,7 +835,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "Sensor Data Invalid",
       "Possible Hardware Issue",
       AlertStatus.normal, AlertSize.mid,
-      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=1.),
+      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=1000000000000000.),
     ET.NO_ENTRY: NoEntryAlert("Sensor Data Invalid"),
     ET.SOFT_DISABLE: soft_disable_alert("Sensor Data Invalid"),
   },
@@ -845,7 +845,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
       "Poor GPS reception",
       "Ensure device has a clear view of the sky",
       AlertStatus.normal, AlertSize.mid,
-      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=600.)
+      Priority.LOWER, VisualAlert.none, AudibleAlert.none, .2, creation_delay=6000000000000000.)
   },
 
   EventName.soundsUnavailable: {
