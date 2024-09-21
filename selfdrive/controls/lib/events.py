@@ -746,7 +746,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
 
   EventName.spAutoBrakeHold: {
     ET.PERMANENT: Alert(
-      ""正在使用sunnypilot刹车保持",
+      "正在使用sunnypilot刹车保持",
       "",
       AlertStatus.normal, AlertSize.small,
       Priority.LOWEST, VisualAlert.none, AudibleAlert.prompt, 0.),
