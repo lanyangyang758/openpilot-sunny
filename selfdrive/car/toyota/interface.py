@@ -291,6 +291,3 @@ class CarInterface(CarInterfaceBase):
     ret.events = events.to_msg()
 
     return ret
-    ret.events = events.to_msg()
-
-    return ret
