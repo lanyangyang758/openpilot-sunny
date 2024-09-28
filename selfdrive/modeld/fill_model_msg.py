@@ -66,6 +66,7 @@ def fill_model_msg(base_msg: capnp._DynamicStructBuilder, extended_msg: capnp._D
   driving_model_data.frameId = vipc_frame_id
   driving_model_data.frameIdExtra = vipc_frame_id_extra
   driving_model_data.frameDropPerc = frame_drop_perc
+  driving_model_data.modelExecutionTime = model_execution_time
 
   action = driving_model_data.action
   model_use_lateral_planner = custom_model_valid and custom_model_capabilities & ModelCapabilities.LateralPlannerSolution
@@ -172,6 +173,8 @@ def fill_model_msg(base_msg: capnp._DynamicStructBuilder, extended_msg: capnp._D
   disengage_predictions.brake3MetersPerSecondSquaredProbs = net_output_data['meta'][0,Meta.HARD_BRAKE_3].tolist()
   disengage_predictions.brake4MetersPerSecondSquaredProbs = net_output_data['meta'][0,Meta.HARD_BRAKE_4].tolist()
   disengage_predictions.brake5MetersPerSecondSquaredProbs = net_output_data['meta'][0,Meta.HARD_BRAKE_5].tolist()
+  disengage_predictions.gasPressProbs = net_output_data['meta'][0,Meta.GAS_PRESS].tolist()
+  disengage_predictions.brakePressProbs = net_output_data['meta'][0,Meta.BRAKE_PRESS].tolist()
 
   publish_state.prev_brake_5ms2_probs[:-1] = publish_state.prev_brake_5ms2_probs[1:]
   publish_state.prev_brake_5ms2_probs[-1] = net_output_data['meta'][0,Meta.HARD_BRAKE_5][0]
@@ -183,10 +186,22 @@ def fill_model_msg(base_msg: capnp._DynamicStructBuilder, extended_msg: capnp._D
 
   # temporal pose
   temporal_pose = modelV2.temporalPose
-  temporal_pose.trans = net_output_data['sim_pose'][0,:3].tolist()
-  temporal_pose.transStd = net_output_data['sim_pose_stds'][0,:3].tolist()
-  temporal_pose.rot = net_output_data['sim_pose'][0,3:].tolist()
-  temporal_pose.rotStd = net_output_data['sim_pose_stds'][0,3:].tolist()
+  if custom_model_valid:
+    if custom_model_capabilities & ModelCapabilities.PlanTemporalPose:
+      temporal_pose.trans = net_output_data['sim_pose'][0,:3].tolist()
+      temporal_pose.transStd = net_output_data['sim_pose_stds'][0,:3].tolist()
+      temporal_pose.rot = net_output_data['sim_pose'][0,3:].tolist()
+      temporal_pose.rotStd = net_output_data['sim_pose_stds'][0,3:].tolist()
+    else:
+      temporal_pose.trans = net_output_data['plan'][0,0,Plan.VELOCITY].tolist()
+      temporal_pose.transStd = net_output_data['plan_stds'][0,0,Plan.VELOCITY].tolist()
+      temporal_pose.rot = net_output_data['plan'][0,0,Plan.ORIENTATION_RATE].tolist()
+      temporal_pose.rotStd = net_output_data['plan_stds'][0,0,Plan.ORIENTATION_RATE].tolist()
+  else:
+    temporal_pose.trans = net_output_data['plan'][0,0,Plan.VELOCITY].tolist()
+    temporal_pose.transStd = net_output_data['plan_stds'][0,0,Plan.VELOCITY].tolist()
+    temporal_pose.rot = net_output_data['plan'][0,0,Plan.ORIENTATION_RATE].tolist()
+    temporal_pose.rotStd = net_output_data['plan_stds'][0,0,Plan.ORIENTATION_RATE].tolist()
 
   # confidence
   if vipc_frame_id % (2*ModelConstants.MODEL_FREQ) == 0:
